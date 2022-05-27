@@ -118,11 +118,14 @@ select categoria, count(categoria) as cantidad from PRODUCTOS
 select Nombre_producto, Stock from PRODUCTOS
 	order by Stock desc limit 3;
     
-/* ¿Qué color de producto es más común en nuestra tienda?*/
+/* ¿Qué color de producto es más común en nuestra tienda?
+dos formas de hacerlo*/
 
+/*metodo uno*/
 SELECT p, max(cantidad) from ( select Color as p, count(color) as cantidad from PRODUCTOS 
 	group by Color order by cantidad desc) as X;
     
+/*metodo dos*/
 select Color, count(color) as cantidad  from PRODUCTOS
 	group by Color order by cantidad desc limit 1;
 	
